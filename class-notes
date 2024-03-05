@@ -40,3 +40,56 @@ https://developer.yahoo.com/performance/rules.html?guccounter=1
 
 https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-hidden
 Remove something from the Accessibility
+
+git and github
+
+git is known as version control for your local system
+
+On your local system
+
+What is version control
+
+For the same repo 
+
+you can create multiple snapshots of the it 
+
+You would need a way to 
+Create these branches 
+Check these branches 
+Add your code to these branches 
+
+git commit - commiting to the changes that you have made in a branch
+git push - pushing those changes on to the branch 
+
+master - main code
+new-branch - some other code
+third-branch - 
+
+merge the new-branch to master
+conflicts could arise in code
+merge conflict and you need to manually resolve these conflicts 
+
+master
+new branch - some changes || merged these changes in master 
+third branch - merge the master branch in third branch 
+
+
+branches 
+
+                                one copy of the repo -  Branch
+                some changes to the code 
+            You can add those changes to the same branch 
+            create a new branch from these changes
+
+
+branch 1 
+branch 2
+
+
+How do I add changes to the new branch 
+How do I send these changes to the github website
+
+
+                 
+Connect cloud to local repository 
+
