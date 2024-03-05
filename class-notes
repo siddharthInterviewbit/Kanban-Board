@@ -93,3 +93,44 @@ How do I send these changes to the github website
                  
 Connect cloud to local repository 
 
+
+
+
+master - this is the code that needs to be deployed
+
+branch-1 - gaurav local
+branch-2 - siddharths local
+branch-3 - Vinethas local 
+
+git commit  - local system
+
+git push origin branch-1 - remote repo (github)
+
+Siddharth follows same process
+
+Vinetha follows same process for there branch
+
+
+Gaurav would create a pull request against the master 
+
+Its a request to merge my branch to master 
+
+Gaurav merges branch-1 to master
+
+branch-2
+branch-3
+
+these are out of sync from master
+
+they would have to pull/merge the changes to there branches from master
+
+merge conflict you have to resolve it manually 
+
+
+branch-2 is update with latest master 
+
+branch-2 should be pushed to master 
+branch-2 is merged to master
+
+Vinetha would pull and merge master 
+and then push to the master
