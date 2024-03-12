@@ -4,11 +4,46 @@ let textAreacont = document.querySelector('.textArea-cont');
 let modalCont = document.querySelector('.modal-cont');
 let allPriorityColors = document.querySelectorAll('.priority-color');
 let mainContainer = document.querySelector('.main-container');
+let toolboxColors = document.querySelectorAll('.color');
 let addTaskFlag = false;
 let removeTaskFlag = false;
+let lockClass = 'fa-lock';
+let unlockClass = 'fa-lock-open';
 let colors = ["lightpink", "lightgreen", "lightblue", "black"];
 let modalPriorityColor = colors[colors.length - 1];
 let ticketsArr = [];
+
+// find the elements from the array which have the selected color 
+// remove all the cards from the screen
+// render only the cards which are black on the screen
+
+for(let i = 0; i < toolboxColors.length; i++) {
+    toolboxColors[i].addEventListener('click', function() {
+        let selectedToolBoxColor = toolboxColors[i].classList[0];
+        let filteredTickets = ticketsArr.filter(function(ticket) {
+            return selectedToolBoxColor === ticket.ticketColor
+        })
+        let allTickets = document.querySelectorAll('.ticket-cont');
+        for(let i = 0; i< allTickets.length; i++) {
+            allTickets[i].remove();
+        }
+
+        filteredTickets.forEach(function(filteredTicket) {
+            createTicket(filteredTicket.ticketColor, filteredTicket.ticketTask, filteredTicket.ticketID);
+        })
+    })
+
+    toolboxColors[i].addEventListener('dblclick', function() {
+        let allTickets = document.querySelectorAll('.ticket-cont');
+        for(let i = 0; i< allTickets.length; i++) {
+            allTickets[i].remove();
+        }
+
+        ticketsArr.forEach(function(ticketsObj) {
+            createTicket(ticketsObj.ticketColor, ticketsObj.ticketTask, ticketsObj.ticketID);
+        })
+    })
+}
 
 addBtn.addEventListener('click', function() {
     addTaskFlag = !addTaskFlag;
@@ -56,8 +91,8 @@ modalCont.addEventListener('keydown', function(e) {
     }
 })
 
-function createTicket(ticketColor, ticketTask) {
-    let id = shortid();
+function createTicket(ticketColor, ticketTask, ticketID) {
+    let id = ticketID  || shortid();
     let ticketCont = document.createElement('div');
     ticketCont.setAttribute('class', 'ticket-cont');
     ticketCont.innerHTML = `
@@ -69,17 +104,34 @@ function createTicket(ticketColor, ticketTask) {
         </div>
     `
     mainContainer.appendChild(ticketCont);
-    handleColor();
-    handleLock();
+    handleColor(ticketCont, id);
+    handleLock(ticketCont, id);
     handleRemove(ticketCont, id);
-    ticketsArr.push({ticketColor, ticketTask, ticketID: id});
-
+    if(!ticketID) {
+        ticketsArr.push({ticketColor, ticketTask, ticketID: id});
+    }
     // {ticketColor: ticketColor, ticketTask: ticketTask, ticketID: id}
     console.log(ticketsArr);
 }
 
-function handleLock() {
+function handleLock(ticket, id) {
+    let ticketLockElem = ticket.querySelector('.ticket-lock');
+    let ticketLockIcon = ticketLockElem.children[0];
+    let ticketTaskArea = ticket.querySelector('.task-area');
 
+    ticketLockIcon.addEventListener('click', function() {
+        let ticketIdx = getTicketIdx(id);
+        if(ticketLockIcon.classList.contains(lockClass)) {
+            ticketLockIcon.classList.add(unlockClass);
+            ticketLockIcon.classList.remove(lockClass);
+            ticketTaskArea.setAttribute('contenteditable', true);
+        } else {
+            ticketLockIcon.classList.add(lockClass);
+            ticketLockIcon.classList.remove(unlockClass);
+            ticketTaskArea.setAttribute('contenteditable', false);
+        }
+        ticketsArr[ticketIdx].ticketTask = ticketTaskArea.innerText;
+    })
 }
 
 function handleColor() {
@@ -90,7 +142,9 @@ function handleRemove(ticket, id) {
     ticket.addEventListener('click', function() {
         if(!removeTaskFlag) return;
         ticket.remove();
-        getTicketIdx(id);
+        let idx = getTicketIdx(id);
+        let deletedElm = ticketsArr.splice(idx, 1);
+        console.log(deletedElm);
     })
 }
 
@@ -101,6 +155,10 @@ function getTicketIdx(id) {
     return ticketID;
 }
 
+//[{ticketId: },{ticketId:},{ticketId:},{ticketId:}]
+
+
+// [1,2,3,4,5]
 
 // create the ticket 
 // we can create a div and append that div in our container

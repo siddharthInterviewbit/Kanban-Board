@@ -119,3 +119,43 @@
     width: 25%;
     height: 100%;
 }
+
+.main-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    justify-content: center;
+}
+
+.ticket-cont {
+    height: 192px;
+    width: 200px;
+    background-color: coral;
+    position: relative;
+}
+
+.ticket-color {
+    height: 16px;
+}
+
+.ticket-id {
+    height: 32px;
+    background-color: yellow;
+}
+
+.ticket-lock {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}
+
+/* 
+html {
+    font-size: 10px;
+}
+
+fontsize of html is 16px
+1rem  =  1* fontsize of html
+2rem  =  2*16
+3rem  = 3*16
+*/
