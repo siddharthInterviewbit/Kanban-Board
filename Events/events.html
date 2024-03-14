@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body * {
+          margin: 10px;
+          border: 1px solid blue;
+        }
+    </style>
+      
+</head>
+<body>
+
+    <form id="f">FORM
+        <div id="d">DIV
+          <p id="p">P</p>
+        </div>
+    </form>
+
+
+    <!-- <ul id="parentList">
+        <li id="1">Item 1</li>
+        <li id="2">Item 2</li>
+        <li id="3">Item 3</li>
+    </ul> -->
+
+    <script>
+        let f = document.getElementById('f');
+        let d = document.getElementById('d');
+        let p = document.getElementById('p');
+
+        f.addEventListener('click', function(e){
+            console.log('f');
+            e.stopPropagation();
+
+        });
+        d.addEventListener('click', function(e){
+            console.log('d');
+            e.stopPropagation();
+
+        });
+        p.addEventListener('click', function(e){
+            console.log('p');
+            e.stopPropagation();
+        });
+
+        // event delegation
+    //     document.getElementById('parentList').addEventListener('click', function(event) {
+    //     if (event.target.getAttribute("id") === '1') {
+    //         console.log(1);
+    //     }
+
+        
+    // });
+    </script>
+</body>
+</html>
+  

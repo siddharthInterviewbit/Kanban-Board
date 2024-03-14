@@ -134,3 +134,56 @@ branch-2 is merged to master
 
 Vinetha would pull and merge master 
 and then push to the master
+
+
+
+Local storage is a storage specific to a browser url that is hit which a  domain.
+So every website has its own local storage space 
+One domain has a space of 5mb in local storage 
+Local storage is persistent does not get deleted on refresh closing of a browser or any of these actions
+localStorage.setItem("myCat", "Tom");
+const cat = localStorage.getItem("myCat");
+localStorage.removeItem("myCat");
+localStorage.clear();
+Everytime the cross is clicked localStorage.setItem(“showbanner”, false);
+Check on the page load if the localstorage value is set to false hide the banner 
+Else if it is set to true show the banner.
+
+
+
+
+
+
+
+
+
+Questions 
+What if we open it in a different browser ?
+Why is it used ?
+How is it used ?
+Why 5mb ?
+Can we know how many mbs are utilized by a website
+
+
+
+
+1 key value max can take 1bit 
+
+
+Event Listeners 
+Capturing 
+Bubbling
+
+document.addEventListener('event', callback, useCapture)
+
+
+this process of event listerners of all the parents being triggered from the child to the parent to upwards is know as event Bubbling
+
+Capturing in js capturing suggests you would trigger the grand parent then parent then child 
+so you start from the outer most and keep coming to the innermost div 
+
+
+the third parameter is by default set to false 
+and if you set it to true the capturing phase starts 
+
+stop propagation
