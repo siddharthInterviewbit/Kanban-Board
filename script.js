@@ -17,6 +17,13 @@ let ticketsArr = [];
 // remove all the cards from the screen
 // render only the cards which are black on the screen
 
+if(localStorage.getItem('tickets')) {
+    ticketsArr = JSON.parse(localStorage.getItem('tickets'));
+    ticketsArr.forEach(function(ticket) {
+        createTicket(ticket.ticketColor, ticket.ticketTask, ticket.ticketID);
+    })
+}
+
 for(let i = 0; i < toolboxColors.length; i++) {
     toolboxColors[i].addEventListener('click', function() {
         let selectedToolBoxColor = toolboxColors[i].classList[0];
@@ -109,6 +116,7 @@ function createTicket(ticketColor, ticketTask, ticketID) {
     handleRemove(ticketCont, id);
     if(!ticketID) {
         ticketsArr.push({ticketColor, ticketTask, ticketID: id});
+        localStorage.setItem('tickets', JSON.stringify(ticketsArr));
     }
     // {ticketColor: ticketColor, ticketTask: ticketTask, ticketID: id}
     console.log(ticketsArr);
@@ -131,10 +139,12 @@ function handleLock(ticket, id) {
             ticketTaskArea.setAttribute('contenteditable', false);
         }
         ticketsArr[ticketIdx].ticketTask = ticketTaskArea.innerText;
+        localStorage.setItem('tickets', JSON.stringify(ticketsArr));
     })
 }
 
 function handleColor() {
+    
 
 }
 
@@ -144,6 +154,7 @@ function handleRemove(ticket, id) {
         ticket.remove();
         let idx = getTicketIdx(id);
         let deletedElm = ticketsArr.splice(idx, 1);
+        localStorage.setItem('tickets', JSON.stringify(ticketsArr));
         console.log(deletedElm);
     })
 }
@@ -178,3 +189,9 @@ function getTicketIdx(id) {
 // [{1}, {2} ,{3} ,{4}]
 // createTicket
 // handleRemove
+
+
+
+// WHenever we are changing the ticketArray 
+// we would use localstorage there 
+// 
