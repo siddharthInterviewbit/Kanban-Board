@@ -187,3 +187,24 @@ the third parameter is by default set to false
 and if you set it to true the capturing phase starts 
 
 stop propagation
+
+
+
+Counter.html
+
+
++ and - button 
+increment the counter based on these and display in a div 
+reset button 
+
+
+star.html
+
+create 5 stars 
+
+
+get all stars
+run loop
+get star value
+if starvalue <= value
+add filled class
