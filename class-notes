@@ -208,3 +208,253 @@ run loop
 get star value
 if starvalue <= value
 add filled class
+
+
+
+setTimeout
+Event loop - important concept in the complete js 
+async/defer
+debouncing
+throttling
+
+
+function abc() {
+    console.log("a");
+    
+    // second console log to be printed after 2 seconds
+    console.log("b");
+}
+
+
+abc()
+
+
+a
+b
+
+you want to wait for 2 seconds 
+
+keep the first instance of current time 
+and then keep checking for the current time to have elapsed 2 seconds 
+you can call the console.log
+
+for that you could use a for/while loop and the loop would break at 2 seconds 
+
+
+setTimeout(callback, timer);
+
+<!-- interview question very very important -->
+Event loop comes into the picture
+
+Event loop is the order in which functions are executed in js 
+and the way in which async behaviour is handled
+
+
+there are few important characters in an event loop 
+
+Stack 
+queue
+browser api 
+
+any function that needs to be execute would 
+first go to call stack 
+
+if an async function is encountered by the 
+call stack 
+
+call stack says I don't know how to handle this and 
+passes it to the browser api 
+
+
+when the call stack is empty then methods in the
+queue should be moved to the callstack
+
+
+
+
+
+
+stack
+
+
+
+queue
+
+browser api
+
+<!-- important interview question -->
+Debounce
+
+once the user has inputed a character 
+start a timer 
+and if the user inputs again in this timer 
+restart the timer 
+
+
+b start a timer 300ms 
+be restart the timer
+ben restart the timer
+beng do the api call 
+beng start the timer to 300ms 
+benga restart the timer 
+bengal restart the timer
+bengalu do the api call 
+
+whenever the user breaches the timer do the api call 
+whenever the user is able to respect the timer restart the timer
+
+
+setTimeout to start a timer 
+
+some way to restart the timer 
+
+function to be called
+
+we would want to wrap the event listener callback in debounce 
+
+
+function btnClick () {
+    console.log("A")
+}
+
+
+function apiCaller(e) {
+    console.log(e.value);
+}
+b 
+be
+ben
+beng
+document.getElementByID("btn").addEventListener('click', debounce(btnClick))
+
+document.getElementByID("input").addEventListener('KeyDown', debounce(apiCaller, 200));
+
+debounce(callback, timer)
+
+function debounce(fn, timer) {
+    let timeoutId;
+    return function() {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(fn, timer);
+    }
+}
+
+=== setTimeout(apiCaller, 200)
+
+// complete the debounce method 
+
+// wait for 2 seconds using new date method using a for loop 
+
+
+when b is clicked 
+timeoutId = undefined
+clearTimeout(undefined);
+timeoutId = setTimeout refrence
+
+when e is clicked
+timeoutId would have the timeout referrence
+clearTimeout(ref);
+timeoutId = new setTimeout referrence
+
+
+
+
+
+b call apiCaller after 200ms 
+e call apiCaller after 200ms 
+n call apiCaller after 200ms 
+g call apiCaller after 200ms 
+
+
+
+b call apiCaller after 200ms 
+e clear the last call if it is within 200ms and set the timer again to 200ms 
+n clear the last call if it is within 200ms and set the timer again to 200ms 
+
+
+throttle
+
+
+you need time of last execution 
+timer 
+current time 
+
+9-8 >= 1 true
+9-8:50 >= 1 false
+currentTime - lastExecution > =  delay {
+    call the function 
+    lastExecution = currentTime
+}
+
+
+
+function throttle(fn, delay) {
+    let lastExecution = 0;
+    return function() {
+        let now = Date.now();
+        if(now - lastExecution >= delay) {
+            fn();
+            lastExecution = now;
+        }
+    }
+}
+
+0           200                    400       600  700       900
+| x y z      | a b c fbdchacas     |          |   x          |
+
+
+
+Solve the problem of e
+arrow functions
+async/defer
+
+
+
+<!-- arrow functions -->
+
+function Welcome(){
+ console.log("Normal function");
+}
+  
+  // Arrow Function
+const Welcome = () => {
+ console.log("Normal function");
+}
+
+function abc() {
+  return 10;
+}
+
+let abc = () => 10;
+
+function test(b) {
+    return b;
+}
+
+let test = (b) => b;
+
+
+let myFunction = (a, b) => a * b;
+
+function myFunction(a,b) {
+    return a*b;
+}
+
+myFunction(1,2);
+
+
+let myFunction = (a, b) => {
+    if(a === 3) {
+        console.log(3);
+    }
+    return a * b;
+}
+
+
+html  
+script  src 
+
+
+
+async and defer
+

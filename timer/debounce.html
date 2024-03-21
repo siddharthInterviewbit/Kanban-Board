@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" id="inp" />
+  <button id="btn">Click</button>
+  
+  <script>
+    function debounce(fn, timer) {
+      let timeoutId;
+      return function(event) {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(function() {
+          fn(event);
+        }, timer);
+      }
+    }
+
+    function throttle(fn, delay) {
+    let lastExecution = 0;
+      return function() {
+        let now = new Date().now();
+        if(now - lastExecution >= delay) {
+            fn();
+            lastExecution = now;
+        }
+      }
+    }
+
+    function apiCaller(e) {
+      console.log("hello");
+      console.log(e);
+      //apicall()
+    }
+
+
+    function btnCaller() {
+      console.log("clicked");
+      //apicall()
+    }
+
+    document.getElementById("inp").addEventListener('keydown', debounce(apiCaller, 200));
+    // document.getElementById("inp").addEventListener('keydown', apiCaller);
+
+    document.getElementById("btn").addEventListener('click', throttle(btnCaller, 20000));
+  </script>
+</body>
+</html>

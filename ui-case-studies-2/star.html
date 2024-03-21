@@ -54,6 +54,9 @@
             ratingDisplay.innerText = value;
             allStars.forEach(function(star) {
                 const starValue = parseInt(star.getAttribute('data-value'));
+                // 
+                // value = 3
+                // starValue = 4
                 star.classList.toggle('filled', starValue <= value);
                 // star.classList.remove('filled');
                 // if(starValue <= value) {
