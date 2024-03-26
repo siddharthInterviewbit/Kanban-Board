@@ -458,3 +458,40 @@ script  src
 
 async and defer
 
+
+OOPS - Object oriented programing in JS 
+
+What is the base of OOPS 
+
+this keyword 
+Different scopes in JS 
+Proto 
+Prorotype 
+Prototypical inheritance
+Different ways to use prototype
+Call bind and apply
+
+
+
+
+
+Local scope is always given precedence over global scope
+
+
+The global scope is called as window
+
+
+Constructror functions 
+
+Constructor functions are supposed to be stating with a capital letter 
+
+this refers to the current calling object in js 
+
+
+Proto
+http://dmitrysoshnikov.com/wp-content/uploads/prototype-chain.png
+
+
+c => b => a
+
+c.calculate()

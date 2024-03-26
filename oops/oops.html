@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // let x = 10;
+        // function abc() {
+        //     let x = 20;
+        //     let b = 20;
+        //     console.log(x);
+        //     console.log(b);
+        // }
+        // abc();
+
+        // let a = [];
+        // let arr = new Array(); // Array is a constructor function or a class
+                    
+        // // let dog = {
+        // //     name: "pluto",
+        // //     breed: "pom"
+        // // }
+
+        // // let dog2 = {
+        // //     name: "bruno",
+        // //     breed: "lab"
+        // // }
+
+        // // let dog = new Dog();
+        // // let dog2 = new Dog();
+        // // this 
+
+        // function Dog(name, breed) {
+        //     this.name = name;
+        //     this.breed = breed;
+        //     console.log(this);
+        // }
+
+        // // function Dog(name, breed) {
+        // //     name = name;
+        // //     breed = breed;
+        // // }
+
+        // let dog = new Dog('pluto', 'pom');
+        // console.log(dog);
+        // let dog2 = new Dog('bruno', 'lab');
+        // console.log(dog2);
+
+        // // console.log(this);
+
+        // var obj = {
+        //     x: "10",
+        //     abc: function() {
+        //         console.log(this.x);
+        //     }
+        // }
+
+        // obj.abc();
+
+        // // arrow function
+
+        // // function abc(a) {
+        // //     return a;
+        // // }
+
+        // // const abc = (a) => a;
+
+
+        // // let Cat = (name,breed) => {
+        // //     this.name = name;
+        // //     this.breed = breed;
+        // // }
+
+        // // let cat1 = new Cat('husk', 'persian');
+        // //  an Arrow function cannot be used to work as a constructor function
+
+
+        // var obj1 = {
+        //     x: "10",
+        //     abc: () => {
+        //         console.log(this);
+        //     }
+        // }
+
+        // obj1.abc();
+        //this for an arrow function behaves little differently from a normal function 
+        // arrow functions suggest that the this in an arrow function does not point to the calling object
+        // instead it points to the parent context 
+
+
+        // function abc() {
+        //     console.log(this);
+        // }
+
+        // abc();
+        // __proto__ pointer that is available inside an object 
+        // this pointer can be used to point to another object 
+        // and this then leads to inheritence between objects
+        let a = {
+            x: 10,
+            y: 30,
+            calculate: function(z) {
+                return this.x + this.y + z;
+            }
+        }
+
+        let d = {
+            x: 10,
+            y: 30,
+            calculate: function(z) {
+                return this.x + this.y + z;
+            }
+        }
+
+        let b = {
+            y: 20,
+            __proto__: a
+        }
+
+        console.log(b.y);
+        console.log(b.x);
+
+        console.log(a.calculate(10)); //50
+        console.log(b.calculate(10)); //40
+
+        let c = {
+            y: 30,
+            temp: 10,
+            z: 50,
+            __proto__: b
+        }
+
+
+        // if() {
+        //     c.__proto__ = b;
+        //     c.calculate()
+        // } else {
+        //     c.__proto__ = d;
+        //     c.calculate()
+        // }
+
+        
+        console.log(c);
+    </script>
+</body>
+</html>
